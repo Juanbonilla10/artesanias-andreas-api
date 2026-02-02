@@ -1,13 +1,13 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
     image: postgres:15
-    container_name: tienda-postgres
+    container_name: artesanias-postgres
     environment:
-      POSTGRES_DB: tienda_db
-      POSTGRES_USER: tienda_user
-      POSTGRES_PASSWORD: tienda_pass
+      POSTGRES_DB: artesanias_db
+      POSTGRES_USER: artesanias_user
+      POSTGRES_PASSWORD: artesanias_pass
     ports:
       - "5432:5432"
     volumes:
