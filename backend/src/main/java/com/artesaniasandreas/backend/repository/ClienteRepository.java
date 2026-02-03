@@ -11,4 +11,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, UUID> {
     Optional<Cliente> findByEmail(String email);
 
     Optional<Cliente> findByGoogleId(String googleId);
+
+
 }

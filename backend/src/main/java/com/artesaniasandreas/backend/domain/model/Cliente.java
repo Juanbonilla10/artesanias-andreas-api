@@ -30,6 +30,9 @@ public class Cliente {
     @Column(name = "last_name")
     private String apellido;
 
+    @Column(name = "status")
+    private String estado;
+
     @Column(name = "google_id", unique = true)
     private String googleId;
 

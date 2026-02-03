@@ -1,7 +1,10 @@
 package com.artesaniasandreas.backend.mapper;
 
-import com.artesaniasandreas.backend.controller.dto.ClienteResponseDTO;
+import com.artesaniasandreas.backend.dto.request.ClienteCreateRequestDTO;
+import com.artesaniasandreas.backend.dto.response.ClienteResponseDTO;
 import com.artesaniasandreas.backend.domain.model.Cliente;
+
+import java.time.LocalDateTime;
 
 public class ClienteMapper {
 
@@ -17,4 +20,17 @@ public class ClienteMapper {
                 cliente.getApellido()
         );
     }
+
+    public static Cliente fromCreateRequest(ClienteCreateRequestDTO dto) {
+        Cliente cliente = new Cliente();
+        cliente.setNombre(dto.getNombre());
+        cliente.setApellido(dto.getApellido());
+        cliente.setEmail(dto.getEmail());
+        cliente.setGoogleId(dto.getGoogleId());
+        cliente.setEstado("ACTIVO");
+        cliente.setCreatedAt(LocalDateTime.now());
+        return cliente;
+    }
+
+
 }

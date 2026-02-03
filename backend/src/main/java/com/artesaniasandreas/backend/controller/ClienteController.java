@@ -1,12 +1,13 @@
 package com.artesaniasandreas.backend.controller;
 
-import com.artesaniasandreas.backend.controller.dto.ClienteResponseDTO;
-import com.artesaniasandreas.backend.domain.model.Cliente;
+import com.artesaniasandreas.backend.dto.request.ClienteCreateRequestDTO;
+import com.artesaniasandreas.backend.dto.response.ClienteResponseDTO;
 import com.artesaniasandreas.backend.mapper.ClienteMapper;
 import com.artesaniasandreas.backend.service.ClienteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +27,14 @@ public class ClienteController {
                 .stream()
                 .map(ClienteMapper::toResponse)
                 .toList();
+    }
+
+    @PostMapping
+    public ResponseEntity<ClienteResponseDTO> crear(
+            @Valid @RequestBody ClienteCreateRequestDTO request) {
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ClienteMapper.toResponse(service.crearCliente(request)));
     }
 }

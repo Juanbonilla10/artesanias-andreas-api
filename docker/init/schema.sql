@@ -5,6 +5,7 @@ CREATE TABLE customers (
     email VARCHAR(255) NOT NULL UNIQUE,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
+    status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
     google_id VARCHAR(255) NOT NULL UNIQUE,
     avatar_url TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT now(),
